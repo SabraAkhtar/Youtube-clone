@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Clone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #111;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* YouTube style logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: #111;
+      gap: 5px;
+    }
+
+    .logo .play-icon {
+      background-color: #ff0000;
+      width: 36px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+    }
+
+    .logo .play-icon::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 12px solid #fff;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+
+    .navbar input {
+      width: 40%;
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+    }
+
+    .navbar .right-icons {
+      display: flex;
+      gap: 15px;
+      font-size: 18px;
+      align-items: center;
+    }
+
+    .create-btn {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+
+    .create-btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* ===== Sidebar ===== */
+    .container {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      padding: 15px 0;
+      height: calc(100vh - 60px);
+      position: sticky;
+      top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #111;
+      margin-bottom: 5px;
+      border-radius: 2px;
+    }
+
+    .sidebar a:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* ===== Video Grid ===== */
+    .main-content {
+      flex: 1;
+      padding: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .video-card {
+      background-color: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .video-info {
+      padding: 10px;
+    }
+
+    .video-info h4 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .video-info p {
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ===== Scrollbar styling ===== */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <div class="play-icon"></div>
+      YouTube
+    </div>
+    <input type="text" placeholder="Search">
+    <div class="right-icons">
+      <button class="create-btn">📹 Create</button>
+      <span>🔔</span>
+      <span>👤</span>
+    </div>
+  </div>
+
+  <!-- Sidebar + Main -->
+  <div class="container">
+    <div class="sidebar">
+      <a href="#">Home</a>
+      <a href="#">Shorts</a>
+      <a href="#">Subscriptions</a>
+      <a href="#">Library</a>
+      <a href="#">History</a>
+      <a href="#">Your Videos</a>
+      <a href="#">Watch Later</a>
+      <a href="#">Liked Videos</a>
+    </div>
+
+    <div class="main-content">
+      <!-- Video Cards 1-12 -->
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg" alt="Video 1">
+        <div class="video-info">
+          <h4>Relaxing Music for Focus</h4>
+          <p>Chill Vibes • 1.2M views • 2 days ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg" alt="Video 2">
+        <div class="video-info">
+          <h4>Nature Documentary</h4>
+          <p>Wildlife Channel • 500K views • 1 week ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/tgbNymZ7vqY/hqdefault.jpg" alt="Video 3">
+        <div class="video-info">
+          <h4>Learn Guitar in 10 Minutes</h4>
+          <p>Music School • 3.5M views • 1 month ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/J---aiyznGQ/hqdefault.jpg" alt="Video 4">
+        <div class="video-info">
+          <h4>Funny Cat Compilation</h4>
+          <p>Funny Animals • 2.1M views • 3 days ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg" alt="Video 5">
+        <div class="video-info">
+          <h4>PSY - GANGNAM STYLE</h4>
+          <p>Official PSY • 4.5M views • 5 years ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Video 6">
+        <div class="video-info">
+          <h4>Relaxing Piano Music</h4>
+          <p>Calm Piano • 1.1M views • 2 weeks ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/L_jWHffIx5E/hqdefault.jpg" alt="Video 7">
+        <div class="video-info">
+          <h4>Epic Movie Trailer</h4>
+          <p>Movie Channel • 2.8M views • 1 month ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg" alt="Video 8">
+        <div class="video-info">
+          <h4>Luis Fonsi - Despacito</h4>
+          <p>Official Luis Fonsi • 6.2M views • 3 years ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/fJ9rUzIMcZQ/hqdefault.jpg" alt="Video 9">
+        <div class="video-info">
+          <h4>Queen - Bohemian Rhapsody</h4>
+          <p>Official Queen • 3.8M views • 2 years ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/OPf0YbXqDm0/hqdefault.jpg" alt="Video 10">
+        <div class="video-info">
+          <h4>Mark Ronson - Uptown Funk</h4>
+          <p>Official Music • 2.9M views • 4 years ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/9C1j9FrGzSg/hqdefault.jpg" alt="Video 11">
+        <div class="video-info">
+          <h4>Motivational Speech</h4>
+          <p>Inspire Channel • 1.5M views • 1 week ago</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://i.ytimg.com/vi/2Vv-BfVoq4g/hqdefault.jpg" alt="Video 12">
+        <div class="video-info">
+          <h4>Ed Sheeran - Perfect</h4>
+          <p>Official Ed Sheeran • 4.1M views • 2 years ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Hawa Jani's YouTube Clone. All rights reserved.
+  </footer>
+
+</body>
+</html>
+
+
